@@ -39,7 +39,7 @@ yum -y install docker
 systemctl enable docker && systemctl start docker
 
 # Add kubernetes repo
-cat < /etc/yum.repos.d/kubernetes.repo
+cat <EOF> /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
 baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
