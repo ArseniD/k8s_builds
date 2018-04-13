@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: web-dep
+  annotations:
+    AppVersion: "3.4"
+spec:
+  selector:
+    matchLabels:
+      app: web-dep
+  replicas: 2 
+  template:
+    metadata:
+      labels:
+        app: web-dep
+        tier: frontend
+    spec:
+      securityContext:
+              #runAsNonRoot: true
+        runAsUser: 1000
+      containers: 
+      - name: web-dep
+        image: nginx:1.9
+        ports:
+        - containerPort: 80
+        command: ["sleep","1000"]
+

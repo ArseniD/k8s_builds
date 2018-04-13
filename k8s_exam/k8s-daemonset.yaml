@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: k8s-daemonset
+spec:
+  selector:
+    matchLabels:
+      daemon: k8s-daemonset
+  template:
+    metadata:
+      labels:
+        daemon: k8s-daemonset
+    spec:
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      containers:
+      - name: k8s-daemonset
+        image: k8s.gcr.io/pause:2.0

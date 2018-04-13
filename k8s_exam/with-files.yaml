@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-files
+spec:
+  containers:
+  - image: nginx
+    name: write-files
+    volumeMounts:
+    - mountPath: /tmp
+      name: temp-volume
+  volumes:
+  - name: temp-volume
+    emptyDir: {}
